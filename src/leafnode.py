@@ -14,6 +14,6 @@ class LeafNode(HTMLNode):
             s = f'<{self.tag}'
             if self.props is not None:
                 props = self.props_to_html()
-                s += f' {props}'
+                s += f'{props}'
             s += f'>{self.value}</{self.tag}>'
             return s
