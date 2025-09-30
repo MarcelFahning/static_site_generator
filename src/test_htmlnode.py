@@ -66,9 +66,9 @@ class TestParentNode(unittest.TestCase):
             "h2",
             [
                 LeafNode("b", "Bold text"),
-                LeafNode(None, "Normal Text"),
+                LeafNode(None, "Normal text"),
                 LeafNode("i", "italic text"),
-                LeafNode(None, "Normal Text")
+                LeafNode(None, "Normal text")
             ]
         )
         self.assertEqual(
