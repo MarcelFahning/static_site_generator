@@ -48,8 +48,7 @@ class ParentNode(HTMLNode):
             raise ValueError('no children provided')
 
         result = f'<{self.tag}'
-        for child in self.children:
-            result += child.to_html()
+        result += self.children.to_html()
         result += f'</{self.tag}>'
 
         return result
