@@ -44,7 +44,7 @@ class ParentNode(HTMLNode):
     def to_html(self) -> str:
         if self.tag is None:
             raise ValueError('no tag provided')
-        if len(self.children) == 0:
+        if self.children is None:
             raise ValueError('no children provided')
 
         result = f'<{self.tag}'
