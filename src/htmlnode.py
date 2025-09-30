@@ -39,16 +39,19 @@ class LeafNode(HTMLNode):
 
 class ParentNode(HTMLNode):
     def __init__(self, tag: str, children: list, props: dict=None):
-        super().__init__(tag, None, list, props)
+        if tag is None:
+            raise ValueError("tag is required")
+        if children is None:
+            raise ValueError("children are required")
+        super().__init__(tag, None, children, props)
 
     def to_html(self) -> str:
-        if self.tag is None:
+        if not self.tag:
             raise ValueError('no tag provided')
-        if self.children is None:
+        if not self.children:
             raise ValueError('no children provided')
 
-        result = f'<{self.tag}'
-        result += self.children.to_html()
-        result += f'</{self.tag}>'
+        props_str = self.props_to_html() if hasattr(self, "props_to_html") else ""
+        inner = "".join(child.to_html() for child in self.children)
 
-        return result
+        return f'<{self.tag}{props_str}>{inner}</{self.tag}>'
